@@ -1,10 +1,12 @@
 return {
+  --fromatting after save
   {
     "stevearc/conform.nvim",
     event = "BufWritePre",
     opts = require "configs.conform",
   },
 
+  --lsp
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -14,6 +16,7 @@ return {
     end,
   },
 
+  --linting
   {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
@@ -22,6 +25,7 @@ return {
     end,
   },
 
+  --treesitter (syntax highlighting)
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
@@ -31,6 +35,7 @@ return {
     end,
   },
 
+  --file explorer
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
@@ -42,6 +47,7 @@ return {
     end,
   },
 
+  --render-markdown
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = {
@@ -52,5 +58,17 @@ return {
     config = function()
       require "configs.markdown"
     end,
+  },
+
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gstatus", "Gblame" },
+    keys = {
+      { "<leader>gs", "<cmd>Git<CR>", desc = "Git Status" },
+      { "<leader>gc", "<cmd>Git commit<CR>", desc = "Git Commit" },
+      { "<leader>gp", "<cmd>Git push<CR>", desc = "Git Push" },
+      { "<leader>gl", "<cmd>Git pull<CR>", desc = "Git Pull" },
+      { "<leader>gb", "<cmd>Git blame<CR>", desc = "Git Blame" },
+    },
   },
 }
