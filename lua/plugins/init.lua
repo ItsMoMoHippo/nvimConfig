@@ -63,6 +63,14 @@ return {
   {
     "tpope/vim-fugitive",
     cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gstatus", "Gblame" },
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "fugitive",
+        callback = function()
+          vim.cmd "wincmd K"
+        end,
+      })
+    end,
     keys = {
       { "<leader>gs", "<cmd>Git<CR>", desc = "Git Status" },
       { "<leader>gc", "<cmd>Git commit<CR>", desc = "Git Commit" },
