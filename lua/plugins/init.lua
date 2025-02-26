@@ -60,6 +60,7 @@ return {
     end,
   },
 
+  -- git inside neovim
   {
     "tpope/vim-fugitive",
     cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gstatus", "Gblame" },
@@ -70,5 +71,23 @@ return {
       { "<leader>gl", "<cmd>Git pull<CR>", desc = "Git Pull" },
       { "<leader>gb", "<cmd>Git blame<CR>", desc = "Git Blame" },
     },
+  },
+
+  --nvim dap :prayge:
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      require "configs.debugger"
+    end,
+  },
+
+  -- nvim-jdtls
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = { "java" },
   },
 }

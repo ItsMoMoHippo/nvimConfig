@@ -17,6 +17,7 @@ local o = {
       "javascript",
       "odin",
       "java",
+      "xml",
     },
     sync_install = false,
     auto_install = false,
